@@ -1,8 +1,12 @@
-import React from 'react'
+import Banner from "../components/home/Banner"
 
 function Home() {
     return (
-        <div>Home</div>
+        <div>
+            <div className="py-8">
+                <Banner />
+            </div>
+        </div>
     )
 }
 
