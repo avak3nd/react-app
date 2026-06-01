@@ -39,10 +39,12 @@ function Banner() {
             tag: 'Most Popular',
             description:
                 "Hogwarts Legacy is an immersive, open-world action RPG. Now you can take control of the action and be at the center of your own adventure in the wizarding world.",
-            price: '8.99 €',
-            bg: "bg-indigo-700",
-            color: "text-white"
-        },
+            price: '3.96 €',
+            originalPrice: '11.31 €',
+            sale: '-65%',
+            bg: 'bg-indigo-700',
+            color: 'text-white',
+        }
     ]);
 
     return (
@@ -78,10 +80,26 @@ function Banner() {
                             <p className="mb-8 mt-2.5 max-w-100 text-[15.5px] leading-6.5 text-white">
                                 {game.description}
                             </p>
-                            <div className="text-white">
-                                <p className="text-[14px] font-medium">
-                                    {game.price}
-                                </p>
+                            <div className="text-white flex items-center gap-4">
+                                {game.sale ? (
+                                    <>
+                                        <p className="text-[12px] bg-blue-700 py-1 px-3 rounded-4xl">
+                                            {game.sale}
+                                        </p>
+
+                                        <p className="text-[14px] font-medium line-through text-neutral-400">
+                                            {game.originalPrice}
+                                        </p>
+
+                                        <p className="text-[14px] font-medium">
+                                            {game.price}
+                                        </p>
+                                    </>
+                                ) : (
+                                    <p className="text-[14px] font-medium">
+                                        {game.price}
+                                    </p>
+                                )}
                             </div>
                             <div className="flex gap-4 items-center mt-4">
                                 <Link
