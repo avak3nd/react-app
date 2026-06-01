@@ -127,7 +127,7 @@ function New() {
                 centeredSlides={false}
                 spaceBetween={24}
                 slidesPerView={5}
-                slidesPerGroup={5}
+                slidesPerGroup={1}
                 coverflowEffect={{
                     rotate: 0,
                     stretch: 0,
@@ -139,11 +139,11 @@ function New() {
             >
                 {games.map((game, index) => (
                     <SwiperSlide key={index} className="w-[206.8px]!">
-                        <Link to="/product">
+                        <Link to="/product" className="group">
                             <div className="overflow-hidden rounded-2xl w-full">
                                 <img
                                     src="https://cdn1.epicgames.com/spt-assets/fa70ea4db42249d1b3c6e4775d0f65a6/dinner-1hsix.jpg"
-                                    className="w-full"
+                                    className="w-full transition-transform duration-500 ease-out group-hover:scale-[1.07]"
                                     alt={game.title}
                                 />
                             </div>
