@@ -125,9 +125,9 @@ function New() {
                 effect="coverflow"
                 grabCursor
                 centeredSlides={false}
-                spaceBetween={24}
-                slidesPerView={5}
+                slidesPerView="auto"
                 slidesPerGroup={1}
+                spaceBetween={24}
                 coverflowEffect={{
                     rotate: 0,
                     stretch: 0,
