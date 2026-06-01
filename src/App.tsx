@@ -7,7 +7,7 @@ import Product from './pages/Product'
 
 function App() {
   return (
-    <div className="bg-neutral-950 h-screen px-5">
+    <div className="bg-neutral-950 h-full px-5">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
