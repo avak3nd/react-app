@@ -1,5 +1,10 @@
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperClass } from 'swiper';
 import { Link } from 'react-router-dom';
+
+import { ChevronRight } from '@boxicons/react';
+import { ChevronLeft } from '@boxicons/react';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -73,22 +78,62 @@ function New() {
         },
     ];
 
+    const swiperRef = useRef<SwiperClass | null>(null);
+
+    const [isBeginning, setIsBeginning] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
+
+    const updateButtons = (swiper: SwiperClass) => {
+        setIsBeginning(swiper.isBeginning);
+        setIsEnd(swiper.isEnd);
+    };
+
     return (
         <div className="max-w-282.5 mx-auto text-white">
-            <b className="text-[20px]">Discover Something New</b>
+            <div className='flex items-center justify-between'>
+                <b className="text-[20px]">Discover Something New</b>
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        disabled={isBeginning}
+                        className={`rounded-full p-1 transition ${isBeginning
+                            ? 'bg-neutral-900 text-neutral-600 cursor-not-allowed'
+                            : 'bg-neutral-800 hover:bg-neutral-700 cursor-pointer'
+                            }`}
+                    >
+                        <ChevronLeft size="base" />
+                    </button>
+
+                    <button
+                        onClick={() => swiperRef.current?.slideNext()}
+                        disabled={isEnd}
+                        className={`rounded-full p-1 transition ${isEnd
+                            ? 'bg-neutral-900 text-neutral-600 cursor-not-allowed'
+                            : 'bg-neutral-800 hover:bg-neutral-700 cursor-pointer'
+                            }`}
+                    >
+                        <ChevronRight size="base" />
+                    </button>
+                </div>
+            </div>
             <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
+                onSwiper={(swiper: SwiperClass) => {
+                    swiperRef.current = swiper;
+                    updateButtons(swiper);
+                }}
+                onSlideChange={(swiper: SwiperClass) => updateButtons(swiper)}
+                effect="coverflow"
+                grabCursor
                 centeredSlides={false}
                 spaceBetween={24}
-                slidesPerView={'auto'}
+                slidesPerView={5}
+                slidesPerGroup={5}
                 coverflowEffect={{
                     rotate: 0,
                     stretch: 0,
                     depth: 0,
                     modifier: 0,
                 }}
-                pagination={true}
                 modules={[EffectCoverflow]}
                 className="mt-8"
             >
