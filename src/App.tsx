@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './layouts/Navbar'
 import Footer from './layouts/Footer'
+import ToTheTop from './layouts/ToTheTop'
+import ScrollToTop from './layouts/ScrollToTop'
 
 import Home from './pages/main/Home'
 import News from './pages/main/News'
@@ -22,6 +24,8 @@ function App() {
   return (
     <div className="bg-neutral-950 h-full px-5">
       <Navbar />
+      <ScrollToTop />
+      <ToTheTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
