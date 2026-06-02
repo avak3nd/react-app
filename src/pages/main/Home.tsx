@@ -1,5 +1,5 @@
-import Banner from "../components/home/Banner"
-import New from "../components/home/New"
+import Banner from "../../components/home/Banner"
+import New from "../../components/home/New"
 
 function Home() {
     return (

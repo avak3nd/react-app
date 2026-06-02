@@ -3,8 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Link } from 'react-router-dom';
 
-import { ChevronRight } from '@boxicons/react';
-import { ChevronLeft } from '@boxicons/react';
+import { ChevronRight, ChevronLeft } from '@boxicons/react';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -101,7 +100,10 @@ function New() {
     return (
         <div className="max-w-282.5 mx-auto text-white">
             <div className='flex items-center justify-between'>
-                <b className="text-[20px]">Discover Something New</b>
+                <Link to="/discover-something-new" className='flex items-center gap-3.5'>
+                    <b className="text-[20px]">Discover Something New</b>
+                    <ChevronRight size="base" removePadding />
+                </Link>
                 <div className="flex items-center gap-3">
                     <button
                         onClick={() => swiperRef.current?.slidePrev()}
