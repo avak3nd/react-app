@@ -3,6 +3,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './layouts/Navbar'
+import Footer from './layouts/Footer'
 
 import Home from './pages/main/Home'
 import News from './pages/main/News'
@@ -35,6 +36,7 @@ function App() {
 
         <Route path="/product" element={<Product />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
