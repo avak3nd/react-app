@@ -5,6 +5,7 @@ import Free from "../../components/home/Free"
 import NewReleases from "../../components/home/NewReleases"
 import Event from "../../components/home/Event"
 import Trending from "../../components/home/Trending"
+import Popular from "../../components/home/Popular"
 
 function Home() {
     return (
@@ -29,6 +30,9 @@ function Home() {
             </div>
             <div className="py-8">
                 <Trending />
+            </div>
+            <div className="py-8">
+                <Popular />
             </div>
         </div>
     )
