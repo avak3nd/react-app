@@ -45,11 +45,11 @@ function Sales() {
     return (
         <div className="max-w-300 mx-auto text-white">
             <Link to="/sales" className="flex items-center gap-3 w-fit">
-                <b className="text-[20px]">See All The Best Deals</b>
+                <b className="text-[20px] max-[525px]:text-[17px]">See All The Best Deals</b>
                 <ChevronRight size="base" removePadding />
             </Link>
 
-            <div className="grid grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-3 gap-6 mt-8 max-[1024px]:grid-cols-2 max-[525px]:grid-cols-1">
                 {products.map((product) => (
                     <Link
                         key={product.id}

@@ -48,7 +48,7 @@ function Trending() {
         <div className="max-w-300 mx-auto text-white">
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                    <b className="text-[20px]">Trending</b>
+                    <b className="text-[20px] max-[525px]:text-[17px]">Trending</b>
                 </div>
 
                 <Link
@@ -75,7 +75,7 @@ function Trending() {
                 className="mt-8"
             >
                 {games.map((game, index) => (
-                    <SwiperSlide key={index} className="w-[220.8px]!">
+                    <SwiperSlide key={index} className="w-[220.8px]! max-[1024px]:w-50! max-[600px]:w-45!">
                         <Link to="/product" className="group">
                             <div className="overflow-hidden rounded-2xl w-full">
                                 <img

@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
-import { BookmarkAlt } from '@boxicons/react';
 import { useState } from 'react';
 
 import { Autoplay } from 'swiper/modules';
@@ -62,22 +61,23 @@ function Banner() {
         >
             {games.map((game) => (
                 <SwiperSlide key={game.id}>
-                    <div className="rounded-3xl h-135 overflow-hidden relative">
+                    <div className="rounded-3xl h-135 max-[525px]:h-115 overflow-hidden relative">
                         <img
                             className="w-full h-full object-cover"
                             src={game.banner}
                             alt="banner"
                         />
-                        <div className="absolute bottom-0 left-0 p-10 w-full bg-linear-to-r h-full flex flex-col justify-end from-black/55 to-transparent">
+                        <div className="hidden max-[525px]:block absolute inset-x-0 bottom-0 h-full backdrop-blur-[2px]" />
+                        <div className="absolute bottom-0 left-0 p-10 max-[525px]:p-6 w-full bg-linear-to-r h-full flex flex-col justify-end from-black/55 max-[525px]:from-black/65 to-transparent">
                             <img
                                 src={game.logo}
                                 alt="logo"
-                                className="w-62.5"
+                                className="w-62.5 max-[525px]:w-55"
                             />
-                            <p className="mt-8 text-[12.5px] font-semibold uppercase text-white">
+                            <p className="mt-8 max-[525px]:mt-6.5 text-[12.5px] font-semibold uppercase text-white">
                                 {game.tag}
                             </p>
-                            <p className="mb-8 mt-2.5 max-w-100 text-[15.5px] leading-6.5 text-white">
+                            <p className="mb-8 max-[525px]:mb-6.5 mt-2.5 max-w-100 text-[15.5px] max-[525px]:text-[14.5px] leading-6.5 text-white">
                                 {game.description}
                             </p>
                             <div className="text-white flex items-center gap-4">
@@ -108,9 +108,6 @@ function Banner() {
                                 >
                                     Purchase
                                 </Link>
-                                <button className="bg-white/15 p-[12.5px] rounded-lg cursor-pointer transition-all duration-300 hover:bg-white/20">
-                                    <BookmarkAlt fill="#fff" size="sm" />
-                                </button>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ import Product from './pages/Product'
 
 function App() {
   return (
-    <div className="bg-neutral-950 h-full px-5">
+    <div className="bg-neutral-950 min-h-screen px-5">
       <Navbar />
       <ScrollToTop />
       <ToTheTop />

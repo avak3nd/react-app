@@ -30,7 +30,7 @@ function Free() {
         <div className="max-w-300 mx-auto text-white rounded-2xl">
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                    <b className="text-[20px]">Free Games</b>
+                    <b className="text-[20px] max-[525px]:text-[17px]">Free Games</b>
                 </div>
 
                 <Link
@@ -41,7 +41,7 @@ function Free() {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-4 gap-6 mt-8">
+            <div className="grid grid-cols-4 gap-6 mt-8 max-[768px]:grid-cols-3 max-[600px]:grid-cols-2">
                 {games.map((game, index) => (
                     <Link key={index} to="/product" className="group">
                         <div className="overflow-hidden rounded-2xl relative">

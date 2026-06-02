@@ -39,7 +39,7 @@ function Other() {
 
     return (
         <div className="max-w-300 mx-auto text-white">
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6 max-[1024px]:grid-cols-2 max-[525px]:grid-cols-1">
                 {sections.map((section, index) => (
                     <div key={index} className="group">
                         <div className="overflow-hidden rounded-2xl">
