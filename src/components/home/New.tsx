@@ -98,9 +98,9 @@ function New() {
     };
 
     return (
-        <div className="max-w-282.5 mx-auto text-white">
+        <div className="max-w-300 mx-auto text-white">
             <div className='flex items-center justify-between'>
-                <Link to="/discover-something-new" className='flex items-center gap-3.5'>
+                <Link to="/discover-something-new" className='flex items-center gap-3'>
                     <b className="text-[20px]">Discover Something New</b>
                     <ChevronRight size="base" removePadding />
                 </Link>
@@ -150,7 +150,7 @@ function New() {
                 className="mt-8"
             >
                 {games.map((game, index) => (
-                    <SwiperSlide key={index} className="w-[206.8px]!">
+                    <SwiperSlide key={index} className="w-[220.8px]!">
                         <Link to="/product" className="group">
                             <div className="overflow-hidden rounded-2xl w-full">
                                 <img

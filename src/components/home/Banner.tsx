@@ -58,7 +58,7 @@ function Banner() {
                 disableOnInteraction: false,
             }}
             spaceBetween={24}
-            className="max-w-282.5"
+            className="max-w-300"
         >
             {games.map((game) => (
                 <SwiperSlide key={game.id}>

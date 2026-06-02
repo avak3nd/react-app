@@ -6,7 +6,7 @@ function Navbar() {
         isActive ? "text-white" : "text-neutral-400 hover:text-white transition-all duration-200";
 
     return (
-        <div className="max-w-282.5 mx-auto py-8">
+        <div className="max-w-300 mx-auto py-8">
             <ul className="flex items-center gap-8 text-[14px]">
                 <li><SearchBar /></li>
                 <li><NavLink to="/" className={linkClass} end>Discover</NavLink></li>
