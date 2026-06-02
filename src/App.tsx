@@ -3,6 +3,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './layouts/Navbar'
+import Sidebar from './layouts/Sidebar'
 import Footer from './layouts/Footer'
 import ToTheTop from './layouts/ToTheTop'
 import ScrollToTop from './layouts/ScrollToTop'
@@ -19,11 +20,16 @@ import Trending from './pages/Trending'
 import Popular from './pages/Popular'
 
 import Product from './pages/Product'
+import { useState } from 'react'
 
 function App() {
+  const [sidebar, setSidebar] = useState(false);
+  const sidebarFunc = () => setSidebar(!sidebar);
+
   return (
     <div className="bg-neutral-950 min-h-screen px-5">
-      <Navbar />
+      <Navbar sidebarFunc={sidebarFunc} />
+      <Sidebar sidebarFunc={sidebarFunc} sidebar={sidebar} />
       <ScrollToTop />
       <ToTheTop />
       <Routes>

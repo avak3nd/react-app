@@ -3,7 +3,11 @@ import { Menu, Atom } from "@boxicons/react";
 
 import SearchBar from "./SearchBar";
 
-function Navbar() {
+type Sidebar = {
+    sidebarFunc: () => void;
+}
+
+function Navbar({ sidebarFunc }: Sidebar) {
     const linkClass = ({ isActive }: { isActive: boolean }) =>
         isActive ? "text-white" : "text-neutral-400 hover:text-white transition-all duration-200";
 
@@ -26,7 +30,7 @@ function Navbar() {
                     <SearchBar />
                 </div>
                 <div className="hidden max-[768px]:flex items-center gap-6 ml-auto">
-                    <button className="cursor-pointer"><Menu fill="white" size="sm" removePadding /></button>
+                    <button className="cursor-pointer" onClick={sidebarFunc}><Menu fill="white" size="sm" removePadding /></button>
                 </div>
             </div>
             <div className="hidden max-[768px]:block mt-6">
