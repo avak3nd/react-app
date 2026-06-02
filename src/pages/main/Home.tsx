@@ -6,6 +6,7 @@ import NewReleases from "../../components/home/NewReleases"
 import Event from "../../components/home/Event"
 import Trending from "../../components/home/Trending"
 import Popular from "../../components/home/Popular"
+import Other from "../../components/home/Other"
 
 function Home() {
     return (
@@ -33,6 +34,9 @@ function Home() {
             </div>
             <div className="py-8">
                 <Popular />
+            </div>
+            <div className="py-8">
+                <Other />
             </div>
         </div>
     )
