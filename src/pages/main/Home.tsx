@@ -3,6 +3,7 @@ import New from "../../components/home/New"
 import Sales from "../../components/home/Sales"
 import Free from "../../components/home/Free"
 import NewReleases from "../../components/home/NewReleases"
+import Event from "../../components/home/Event"
 
 function Home() {
     return (
@@ -21,6 +22,9 @@ function Home() {
             </div>
             <div className="py-8">
                 <NewReleases />
+            </div>
+            <div className="py-8">
+                <Event />
             </div>
         </div>
     )
