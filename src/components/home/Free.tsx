@@ -1,28 +1,33 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface Game {
-    title: string;
-    image: string;
-}
+import CardFree from "../ui/CardFree";
+import type { Game } from "../../types/game";
+import { useState } from "react";
 
 function Free() {
     const [games] = useState<Game[]>([
         {
+            id: "1",
             title: "Rocket League",
-            image: "https://cdn1.epicgames.com/offer/9773aa1aa54f4f7b80e44bef04986cea/EGS_RocketLeague_PsyonixLLC_S2_1200x1600-81ee7dcdd3e3495fa637d085f7b913b5",
+            img: "https://cdn1.epicgames.com/offer/9773aa1aa54f4f7b80e44bef04986cea/EGS_RocketLeague_PsyonixLLC_S2_1200x1600-81ee7dcdd3e3495fa637d085f7b913b5",
+            price: "Free",
         },
         {
+            id: "2",
             title: "Fortnite",
-            image: "https://cdn1.epicgames.com/offer/fn/FNBR_40-41_C7S2_EndEvent_PowerHour-DualHelmets_EGS_Launcher_Blade_1200x1600_1200x1600-253c504f235140eabcc43cf9c5c6e6c9",
+            img: "https://cdn1.epicgames.com/offer/fn/FNBR_40-41_C7S2_EndEvent_PowerHour-DualHelmets_EGS_Launcher_Blade_1200x1600_1200x1600-253c504f235140eabcc43cf9c5c6e6c9",
+            price: "Free",
         },
         {
+            id: "3",
             title: "PUBG: BATTLEGROUNDS",
-            image: "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-1rx7f.png",
+            img: "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-1rx7f.png",
+            price: "Free",
         },
         {
+            id: "4",
             title: "Genshin Impact",
-            image: "https://cdn1.epicgames.com/spt-assets/99dc46c68ea14324964a856d18dcac5b/genshin-impact-hqdph.jpg",
+            img: "https://cdn1.epicgames.com/spt-assets/99dc46c68ea14324964a856d18dcac5b/genshin-impact-hqdph.jpg",
+            price: "Free",
         },
     ]);
 
@@ -43,27 +48,7 @@ function Free() {
 
             <div className="grid grid-cols-4 gap-6 mt-8 max-[768px]:grid-cols-3 max-[600px]:grid-cols-2">
                 {games.map((game, index) => (
-                    <Link key={index} to="/product" className="group">
-                        <div className="overflow-hidden rounded-2xl relative">
-                            <img
-                                className="transition-transform duration-500 ease-out group-hover:scale-[1.07]"
-                                src={game.image}
-                                alt={game.title}
-                            />
-
-                            <div className="absolute bottom-0 bg-blue-700 w-full p-1 text-center font-semibold text-[15px]">
-                                <p>FREE NOW</p>
-                            </div>
-                        </div>
-
-                        <p className="mt-4 font-bold text-[16px]">
-                            {game.title}
-                        </p>
-
-                        <p className="text-[14px] text-neutral-400">
-                            Free
-                        </p>
-                    </Link>
+                    <CardFree key={index} game={game} />
                 ))}
             </div>
         </div>

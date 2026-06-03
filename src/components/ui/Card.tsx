@@ -32,16 +32,16 @@ function Card({ game }: CardProps) {
                         </p>
 
                         <p className="text-[14px] line-through text-neutral-400">
-                            {game.price}
+                            €{game.price}
                         </p>
 
                         <p className="text-[14px]">
-                            {game.salePrice}
+                            €{game.salePrice}
                         </p>
                     </>
                 ) : (
                     <p className="text-[14px]">
-                        {game.price}
+                        €{game.price}
                     </p>
                 )}
             </div>

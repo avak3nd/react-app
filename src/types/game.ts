@@ -1,8 +1,9 @@
 export type Game = {
+    id: string;
     title: string;
     img: string;
-    type: string;
-    price: string;
+    type?: string;
     sale?: number;
-    salePrice?: string;
+    price?: string | number;
+    salePrice?: number;
 };
