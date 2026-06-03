@@ -1,6 +1,8 @@
 import Card from "../components/ui/Card"
 
 function Popular() {
+    document.title = "React Games | Most Popular";
+
     const games = [
         {
             title: 'LEGO® Batman™: Legacy of the Dark Knight',

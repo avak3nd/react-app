@@ -1,6 +1,8 @@
 import Card from "../components/ui/Card";
 
 function Trending() {
+    document.title = "React Games | Trending";
+
     const games = [
         {
             title: 'LEGO® Batman™: Legacy of the Dark Knight',

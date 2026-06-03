@@ -1,6 +1,8 @@
 import Card from "../components/ui/Card";
 
 function New() {
+    document.title = "React Games | Discover Something New";
+
     const games = [
         {
             title: 'LEGO® Batman™: Legacy of the Dark Knight',

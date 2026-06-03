@@ -1,6 +1,8 @@
 import Card from "../components/ui/Card"
 
 function Free() {
+    document.title = "React Games | Free Games";
+
     const games = [
         {
             title: 'LEGO® Batman™: Legacy of the Dark Knight',

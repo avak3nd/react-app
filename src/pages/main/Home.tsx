@@ -9,6 +9,8 @@ import Popular from "../../components/home/Popular"
 import Other from "../../components/home/Other"
 
 function Home() {
+    document.title = "React Games | Discover";
+
     return (
         <div>
             <div className="py-8">
