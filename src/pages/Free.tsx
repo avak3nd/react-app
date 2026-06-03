@@ -11,9 +11,7 @@ function Free() {
             title: 'LEGO® Batman™: Legacy of the Dark Knight',
             img: "https://cdn1.epicgames.com/spt-assets/fa70ea4db42249d1b3c6e4775d0f65a6/dinner-1hsix.jpg",
             type: 'Base game',
-            price: 69.99,
-            sale: 65,
-            salePrice: 24.49,
+            price: "Free",
         },
         {
             id: "2",

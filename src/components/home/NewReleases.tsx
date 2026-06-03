@@ -40,7 +40,7 @@ function NewReleases() {
             title: 'Crimson Desert',
             img: "https://cdn1.epicgames.com/spt-assets/f9616d900e1048a29ee9ffe9523c1594/crimson-desert-1lwr4.png",
             type: 'Base game',
-            price: 59.99,
+            price: "Free",
         },
         {
             id: "5",

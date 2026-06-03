@@ -41,7 +41,7 @@ function Card({ game }: CardProps) {
                     </>
                 ) : (
                     <p className="text-[14px]">
-                        €{game.price}
+                        {game.price === "Free" ? game.price : `€${game.price}`}
                     </p>
                 )}
             </div>
