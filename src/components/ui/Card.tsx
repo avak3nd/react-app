@@ -20,11 +20,11 @@ function Card({ game }: CardProps) {
                 {game.type}
             </p>
 
-            <p className="mt-1.5 font-bold text-[14px]">
+            <p className="mt-1.5 font-bold text-[14px] line-clamp-2">
                 {game.title}
             </p>
 
-            <div className="mt-4 flex items-center gap-3.5">
+            <div className="mt-4 flex items-center flex-wrap gap-3.5">
                 {game.sale ? (
                     <>
                         <p className="text-[12px] bg-blue-700 py-1 px-3 rounded-4xl">
