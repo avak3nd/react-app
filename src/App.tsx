@@ -33,10 +33,13 @@ function App() {
       <ScrollToTop />
       <ToTheTop />
       <Routes>
+
+        {/* Main routes */}
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/news" element={<News />} />
 
+        {/* Home routes */}
         <Route path="/discover-something-new" element={<New />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/free-games" element={<Free />} />
@@ -44,6 +47,7 @@ function App() {
         <Route path="/trending" element={<Trending />} />
         <Route path="/most-popular" element={<Popular />} />
 
+        {/* Product route */}
         <Route path="/product" element={<Product />} />
       </Routes>
       <Footer />
