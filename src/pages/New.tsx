@@ -1,6 +1,8 @@
 function New() {
     return (
-        <div>New</div>
+        <div className="max-w-300 mx-auto text-white py-8">
+            <b className="text-[40px]">Discover Something New</b>
+        </div>
     )
 }
 
