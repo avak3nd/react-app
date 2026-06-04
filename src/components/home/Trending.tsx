@@ -13,21 +13,21 @@ import { useState } from 'react';
 function Trending() {
     const [games] = useState<Game[]>([
         {
-            id: "1",
+            _id: "1",
             title: 'The Bornless',
             img: "https://cdn1.epicgames.com/spt-assets/2108caf3a9514ab0b1a4d2383197d452/the-bornless-j8etf.png",
             type: 'Base game',
             price: 49.99,
         },
         {
-            id: "2",
+            _id: "2",
             title: 'LEGO® Batman™: Legacy of the Dark Knight',
             img: "https://cdn1.epicgames.com/spt-assets/154c374195a443e9bf4e9fbd3a60d94f/rules-of-engagement-12qeu.jpg",
             type: 'Base game',
             price: 69.99,
         },
         {
-            id: "3",
+            _id: "3",
             title: 'Retrace the Light',
             img: "https://cdn1.epicgames.com/spt-assets/407fe6e2ec1040bfb596cd86b5512791/retracethelight-1xg61.png",
             type: 'Base game',
@@ -36,7 +36,7 @@ function Trending() {
             salePrice: 27.49,
         },
         {
-            id: "4",
+            _id: "4",
             title: 'PROJECT_ORIGINS',
             img: "https://cdn1.epicgames.com/spt-assets/d736723c491b4714980ee65c6ff9c3bb/project_origins-1d3tt.png",
             type: 'Base game',
@@ -45,7 +45,7 @@ function Trending() {
             salePrice: 24.49,
         },
         {
-            id: "5",
+            _id: "5",
             title: 'Bunny Guys!',
             img: "https://cdn1.epicgames.com/spt-assets/9022d4bbe9964858bfac21a499804b2d/bunny-guys-es0nf.jpg",
             type: 'Base game',

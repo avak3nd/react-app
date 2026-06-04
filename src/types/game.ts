@@ -1,5 +1,5 @@
 export type Game = {
-    id: string;
+    _id: string;
     title: string;
     img: string;
     img2?: string;
