@@ -7,4 +7,5 @@ export type Game = {
     sale?: number;
     price: string | number;
     salePrice?: number;
+    tag?: string[];
 };
