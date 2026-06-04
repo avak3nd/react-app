@@ -5,6 +5,6 @@ export type Game = {
     img2?: string;
     type?: string;
     sale?: number;
-    price?: string | number;
+    price: string | number;
     salePrice?: number;
 };
