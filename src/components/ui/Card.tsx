@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import type { Game } from "../../types/game";
 
 type CardProps = {
@@ -6,13 +7,25 @@ type CardProps = {
 };
 
 function Card({ game }: CardProps) {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     return (
         <Link to={`/product/${game._id}`} className="group">
-            <div className="overflow-hidden rounded-2xl w-full">
+            <div className="relative aspect-3/4 overflow-hidden rounded-2xl w-full">
+                {!isLoaded && (
+                    <div className="absolute inset-0 animate-pulse bg-neutral-800" />
+                )}
+
                 <img
                     src={game.img}
-                    className="w-full transition-transform duration-500 ease-out group-hover:scale-[1.07]"
                     alt={game.title}
+                    onLoad={() => setIsLoaded(true)}
+                    className={`
+                        h-full w-full object-cover
+                        transition-all duration-500 ease-out
+                        group-hover:scale-[1.07]
+                        ${isLoaded ? "opacity-100" : "opacity-0"}
+                    `}
                 />
             </div>
 

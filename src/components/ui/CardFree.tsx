@@ -1,18 +1,31 @@
 import { Link } from "react-router-dom";
 import type { Game } from "../../types/game";
+import { useState } from "react";
 
 type CardProps = {
     game: Game;
 };
 
 function CardFree({ game }: CardProps) {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     return (
         <Link to={`/product/${game._id}`} className="group">
-            <div className="overflow-hidden rounded-2xl relative">
+            <div className="relative aspect-3/4 overflow-hidden rounded-2xl w-full">
+                {!isLoaded && (
+                    <div className="absolute inset-0 animate-pulse bg-neutral-800" />
+                )}
+
                 <img
-                    className="transition-transform duration-500 ease-out group-hover:scale-[1.07]"
                     src={game.img}
                     alt={game.title}
+                    onLoad={() => setIsLoaded(true)}
+                    className={`
+                        h-full w-full object-cover
+                        transition-all duration-500 ease-out
+                        group-hover:scale-[1.07]
+                        ${isLoaded ? "opacity-100" : "opacity-0"}
+                    `}
                 />
 
                 <div className="absolute bottom-0 bg-blue-700 w-full p-1 text-center font-semibold text-[15px]">
