@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { getGamesByTag } from "../api/games";
 
-export const useGamesByTag = (tag: string) => {
+export const useGamesByTag = (
+    tag: string,
+    limit?: number
+) => {
     return useQuery({
-        queryKey: ["games", tag],
-        queryFn: () => getGamesByTag(tag),
+        queryKey: ["games", tag, limit],
+        queryFn: () => getGamesByTag(tag, limit),
     });
 };
