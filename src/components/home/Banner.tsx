@@ -11,39 +11,42 @@ function Banner() {
     const [games] = useState([
         {
             id: 1,
-            banner: '/home/banner/1.jpg',
-            logo: '/home/banner/1-1.png',
-            tag: 'New Release',
+            _id: "6a226e5c2dbcb4d6b6deaac6",
+            banner: "/home/banner/1.jpg",
+            logo: "/home/banner/1-1.png",
+            tag: "New Release",
             description:
                 "Earn the Number. 007 First Light is a thrilling espionage action-adventure game from IO Interactive. Follow James Bond as a young, and reckless recruit in MI6's training program.",
-            price: '69,99 €',
+            price: "69,99 €",
             bg: "bg-yellow-700",
-            color: "text-white"
+            color: "text-white",
         },
         {
             id: 2,
-            banner: '/home/banner/2.jpg',
-            logo: '/home/banner/2-2.png',
-            tag: 'Top Seller',
+            _id: "6a226eb82dbcb4d6b6deaac8",
+            banner: "/home/banner/2.jpg",
+            logo: "/home/banner/2-2.png",
+            tag: "Top Seller",
             description:
                 "Blood will run in Ghostrunner 2, a hardcore FPP slasher set in a post-apocalyptic cyberpunk future. Become the ultimate cyber ninja and prepare for epic boss fights.",
-            price: '7,99 €',
+            price: "7,99 €",
             bg: "bg-rose-700",
-            color: "text-white"
+            color: "text-white",
         },
         {
             id: 3,
-            banner: '/home/banner/3.jpeg',
-            logo: '/home/banner/3-3.png',
-            tag: 'Most Popular',
+            _id: "6a211ea94c40599f7b1f2bb3",
+            banner: "/home/banner/3.jpeg",
+            logo: "/home/banner/3-3.png",
+            tag: "Most Popular",
             description:
                 "Hogwarts Legacy is an immersive, open-world action RPG. Now you can take control of the action and be at the center of your own adventure in the wizarding world.",
-            price: '3.96 €',
-            originalPrice: '11.31 €',
-            sale: '-65%',
-            bg: 'bg-indigo-700',
-            color: 'text-white',
-        }
+            price: "3.96 €",
+            originalPrice: "11.31 €",
+            sale: "-65%",
+            bg: "bg-indigo-700",
+            color: "text-white",
+        },
     ]);
 
     return (
@@ -103,7 +106,7 @@ function Banner() {
                             </div>
                             <div className="flex gap-4 items-center mt-4">
                                 <Link
-                                    to="/product"
+                                    to={`/product/${game._id}`}
                                     className={`${game.bg} ${game.color} px-5 py-3 text-[14px] font-medium rounded-lg transition-all duration-300 hover:scale-105`}
                                 >
                                     Purchase
