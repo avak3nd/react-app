@@ -7,7 +7,7 @@ type CardProps = {
 
 function CardFree({ game }: CardProps) {
     return (
-        <Link to="/product" className="group">
+        <Link to={`/product/${game._id}`} className="group">
             <div className="overflow-hidden rounded-2xl relative">
                 <img
                     className="transition-transform duration-500 ease-out group-hover:scale-[1.07]"

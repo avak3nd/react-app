@@ -16,8 +16,7 @@ import { EffectCoverflow } from "swiper/modules";
 import { useGamesByTag } from "../../hooks/useGamesByTag";
 
 function New() {
-    const { data: games = [], isLoading, isError } =
-        useGamesByTag("new");
+    const { data: games = [], isLoading, isError } = useGamesByTag("new", 10);
 
     const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -69,8 +68,8 @@ function New() {
                         }
                         disabled={isBeginning}
                         className={`rounded-full p-1 transition ${isBeginning
-                                ? "bg-neutral-900 text-neutral-600 cursor-not-allowed"
-                                : "bg-neutral-800 hover:bg-neutral-700 cursor-pointer"
+                            ? "bg-neutral-900 text-neutral-600 cursor-not-allowed"
+                            : "bg-neutral-800 hover:bg-neutral-700 cursor-pointer"
                             }`}
                     >
                         <ChevronLeft size="base" />
@@ -82,8 +81,8 @@ function New() {
                         }
                         disabled={isEnd}
                         className={`rounded-full p-1 transition ${isEnd
-                                ? "bg-neutral-900 text-neutral-600 cursor-not-allowed"
-                                : "bg-neutral-800 hover:bg-neutral-700 cursor-pointer"
+                            ? "bg-neutral-900 text-neutral-600 cursor-not-allowed"
+                            : "bg-neutral-800 hover:bg-neutral-700 cursor-pointer"
                             }`}
                     >
                         <ChevronRight size="base" />

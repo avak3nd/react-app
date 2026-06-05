@@ -19,7 +19,7 @@ import NewReleases from './pages/NewReleases'
 import Trending from './pages/Trending'
 import Popular from './pages/Popular'
 
-import Product from './pages/Product'
+import Product from './pages/main/Product'
 import { useState } from 'react'
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/news" element={<News />} />
+        <Route path="/product/:id" element={<Product />} />
 
         {/* Home routes */}
         <Route path="/discover-something-new" element={<New />} />
@@ -46,10 +47,8 @@ function App() {
         <Route path="/top-new-releases" element={<NewReleases />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/most-popular" element={<Popular />} />
-
-        {/* Product route */}
-        <Route path="/product" element={<Product />} />
       </Routes>
+
       <Footer />
     </div>
   )

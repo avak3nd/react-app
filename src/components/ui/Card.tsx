@@ -7,7 +7,7 @@ type CardProps = {
 
 function Card({ game }: CardProps) {
     return (
-        <Link to="/product" className="group">
+        <Link to={`/product/${game._id}`} className="group">
             <div className="overflow-hidden rounded-2xl w-full">
                 <img
                     src={game.img}
