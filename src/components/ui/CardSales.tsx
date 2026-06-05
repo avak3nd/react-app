@@ -14,7 +14,7 @@ function CardSales({ game }: CardProps) {
             >
                 <div className="overflow-hidden rounded-2xl relative">
                     <img
-                        src={game.img}
+                        src={game.img2}
                         alt={game.title}
                         className="transition-transform duration-500 ease-out group-hover:scale-[1.07]"
                     />
