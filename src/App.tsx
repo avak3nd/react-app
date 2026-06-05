@@ -19,7 +19,7 @@ import NewReleases from './pages/NewReleases'
 import Trending from './pages/Trending'
 import Popular from './pages/Popular'
 
-import Product from './pages/Product'
+import Product from './pages/main/Product'
 import { useState } from 'react'
 
 function App() {
