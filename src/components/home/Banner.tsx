@@ -49,6 +49,12 @@ function Banner() {
         },
     ]);
 
+    const [loadedAssets, setLoadedAssets] = useState<Set<string>>(new Set());
+
+    const handleLoad = (key: string) => {
+        setLoadedAssets(prev => new Set(prev).add(key));
+    };
+
     return (
         <Swiper
             modules={[Autoplay]}
@@ -62,60 +68,85 @@ function Banner() {
             spaceBetween={24}
             className="max-w-300"
         >
-            {games.map((game) => (
-                <SwiperSlide key={game.id}>
-                    <div className="rounded-3xl h-135 max-[525px]:h-115 overflow-hidden relative">
-                        <img
-                            className="w-full h-full object-cover"
-                            src={game.banner}
-                            alt="banner"
-                        />
-                        <div className="hidden max-[525px]:block absolute inset-x-0 bottom-0 h-full backdrop-blur-[2px]" />
-                        <div className="absolute bottom-0 left-0 p-10 max-[525px]:p-6 w-full bg-linear-to-r h-full flex flex-col justify-end from-black/55 max-[525px]:from-black/65 to-transparent">
+            {games.map((game) => {
+                const isReady =
+                    loadedAssets.has(`banner-${game.id}`) &&
+                    loadedAssets.has(`logo-${game.id}`);
+
+                return (
+                    <SwiperSlide key={game.id}>
+                        <div className="rounded-3xl h-135 max-[525px]:h-115 overflow-hidden relative">
+                            {!isReady && (
+                                <div className="absolute inset-0 animate-pulse bg-neutral-800" />
+                            )}
+
                             <img
-                                src={game.logo}
-                                alt="logo"
-                                className="w-62.5 max-[525px]:w-55"
+                                src={game.banner}
+                                alt="banner"
+                                onLoad={() => handleLoad(`banner-${game.id}`)}
+                                className={`
+                                    w-full h-full object-cover
+                                    transition-opacity duration-500
+                                    ${isReady ? "opacity-100" : "opacity-0"}
+                                `}
                             />
-                            <p className="mt-8 max-[525px]:mt-6.5 text-[12.5px] font-semibold uppercase text-white">
-                                {game.tag}
-                            </p>
-                            <p className="mb-8 max-[525px]:mb-6.5 mt-2.5 max-w-100 text-[15.5px] max-[525px]:text-[14.5px] leading-6.5 text-white">
-                                {game.description}
-                            </p>
-                            <div className="text-white flex items-center gap-4">
-                                {game.sale ? (
-                                    <>
-                                        <p className="text-[12px] bg-blue-700 py-1 px-3 rounded-4xl">
-                                            {game.sale}
-                                        </p>
+                            <div className="hidden max-[525px]:block absolute inset-x-0 bottom-0 h-full backdrop-blur-[2px]" />
+                            <div
+                                className={`
+                                    absolute bottom-0 left-0 p-10 max-[525px]:p-6 w-full
+                                    bg-linear-to-r h-full flex flex-col justify-end
+                                    from-black/55 max-[525px]:from-black/65 to-transparent
+                                    transition-opacity duration-500
+                                    ${isReady ? "opacity-100" : "opacity-0"}
+                                `}
+                            >
+                                <img
+                                    src={game.logo}
+                                    alt="logo"
+                                    onLoad={() => handleLoad(`logo-${game.id}`)}
+                                    className="w-62.5 max-[525px]:w-55"
+                                />
+                                <p className="mt-8 max-[525px]:mt-6.5 text-[12.5px] font-semibold uppercase text-white">
+                                    {game.tag}
+                                </p>
+                                <p className="mb-8 max-[525px]:mb-6.5 mt-2.5 max-w-100 text-[15.5px] max-[525px]:text-[14.5px] leading-6.5 text-white">
+                                    {game.description}
+                                </p>
+                                <div className="text-white flex items-center gap-4">
+                                    {game.sale ? (
+                                        <>
+                                            <p className="text-[12px] bg-blue-700 py-1 px-3 rounded-4xl">
+                                                {game.sale}
+                                            </p>
 
-                                        <p className="text-[14px] font-medium line-through text-neutral-400">
-                                            {game.originalPrice}
-                                        </p>
+                                            <p className="text-[14px] font-medium line-through text-neutral-400">
+                                                {game.originalPrice}
+                                            </p>
 
+                                            <p className="text-[14px] font-medium">
+                                                {game.price}
+                                            </p>
+                                        </>
+                                    ) : (
                                         <p className="text-[14px] font-medium">
                                             {game.price}
                                         </p>
-                                    </>
-                                ) : (
-                                    <p className="text-[14px] font-medium">
-                                        {game.price}
-                                    </p>
-                                )}
-                            </div>
-                            <div className="flex gap-4 items-center mt-4">
-                                <Link
-                                    to={`/product/${game._id}`}
-                                    className={`${game.bg} ${game.color} px-5 py-3 text-[14px] font-medium rounded-lg transition-all duration-300 hover:scale-105`}
-                                >
-                                    Purchase
-                                </Link>
+                                    )}
+                                </div>
+                                <div className="flex gap-4 items-center mt-4">
+                                    <Link
+                                        to={`/product/${game._id}`}
+                                        className={`${game.bg} ${game.color} px-5 py-3 text-[14px] font-medium rounded-lg transition-all duration-300 hover:scale-105`}
+                                    >
+                                        Purchase
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </SwiperSlide>
-            ))}
+                    </SwiperSlide>
+
+                )
+            })}
         </Swiper>
     );
 }

@@ -37,16 +37,32 @@ function Other() {
         },
     ]);
 
+    const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+
+    const handleImageLoad = (index: number) => {
+        setLoadedImages((prev) => new Set(prev).add(index));
+    };
+
     return (
         <div className="max-w-300 mx-auto text-white">
             <div className="grid grid-cols-3 gap-6 max-[1024px]:grid-cols-2 max-[525px]:grid-cols-1">
                 {sections.map((section, index) => (
                     <div key={index} className="group">
-                        <div className="overflow-hidden rounded-2xl">
+                        <div className="relative overflow-hidden rounded-2xl aspect-video">
+                            {!loadedImages.has(index) && (
+                                <div className="absolute inset-0 animate-pulse bg-neutral-800" />
+                            )}
+
                             <img
                                 src={section.image}
                                 alt={section.title}
-                                className="transition-transform duration-500 ease-out group-hover:scale-[1.07]"
+                                onLoad={() => handleImageLoad(index)}
+                                className={`
+                                    w-full h-full object-cover
+                                    transition-all duration-500 ease-out
+                                    group-hover:scale-[1.07]
+                                    ${loadedImages.has(index) ? "opacity-100" : "opacity-0"}
+                                `}
                             />
                         </div>
 
