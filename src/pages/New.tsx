@@ -1,6 +1,12 @@
 import Card from "../components/ui/Card";
 import { useGamesByTag } from "../hooks/useGamesByTag";
 
+import CardLoading from "../components/ui/CardLoading";
+
+import Skeleton from "react-loading-skeleton";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 function New() {
     document.title = "React Games | Discover Something New";
 
@@ -8,9 +14,27 @@ function New() {
 
     if (isLoading) {
         return (
-            <div className="max-w-300 mx-auto text-white py-8">
-                Loading...
-            </div>
+            <SkeletonTheme
+                baseColor="oklch(26.9% 0 0)"
+                highlightColor="oklch(37.1% 0 0)"
+            >
+                <div className="max-w-300 mx-auto">
+                    <div className="flex items-center justify-between">
+                        <Skeleton width={240} height={24} />
+
+                        <div className="flex gap-3">
+                            <Skeleton circle width={32} height={32} />
+                            <Skeleton circle width={32} height={32} />
+                        </div>
+                    </div>
+
+                    <div className="mt-8 grid grid-cols-5 gap-6 max-[1024px]:grid-cols-4 max-[600px]:grid-cols-3">
+                        {Array.from({ length: 10 }).map((_, index) => (
+                            <CardLoading key={index} />
+                        ))}
+                    </div>
+                </div>
+            </SkeletonTheme>
         );
     }
 
