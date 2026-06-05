@@ -6,7 +6,7 @@ function CardLoading() {
         <div>
             <div className="overflow-hidden rounded-2xl">
                 <Skeleton
-                    height={295}
+                    height={294.39}
                     borderRadius={16}
                 />
             </div>

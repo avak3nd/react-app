@@ -48,12 +48,31 @@ function New() {
                             <Skeleton circle width={32} height={32} />
                         </div>
                     </div>
-
-                    <div className="mt-8 grid grid-cols-5 gap-6 max-[1024px]:grid-cols-4 max-[600px]:grid-cols-3">
+                    <Swiper
+                        effect="coverflow"
+                        grabCursor
+                        centeredSlides={false}
+                        slidesPerView="auto"
+                        slidesPerGroup={1}
+                        spaceBetween={24}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 0,
+                            modifier: 0,
+                        }}
+                        modules={[EffectCoverflow]}
+                        className="mt-8"
+                    >
                         {Array.from({ length: 5 }).map((_, index) => (
-                            <CardLoading key={index} />
+                            <SwiperSlide
+                                key={index}
+                                className="w-[220.8px]! max-[1024px]:w-50! max-[600px]:w-45!"
+                            >
+                                <CardLoading />
+                            </SwiperSlide>
                         ))}
-                    </div>
+                    </Swiper>
                 </div>
             </SkeletonTheme>
         );
