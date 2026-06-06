@@ -74,7 +74,7 @@ function SearchBar({ rounded = false }: SearchBarProps) {
                             <Link
                                 key={game._id}
                                 to={`/product/${game._id}`}
-                                className="flex items-center gap-3 p-3 hover:bg-neutral-700 transition"
+                                className="flex items-center gap-4 py-3 px-4 hover:bg-neutral-700 transition"
                                 onClick={() =>
                                     setSearch("")
                                 }
@@ -84,10 +84,14 @@ function SearchBar({ rounded = false }: SearchBarProps) {
                                     alt={game.title}
                                     className="w-12 h-16 object-cover rounded"
                                 />
-
-                                <span className="text-white text-sm">
-                                    {game.title}
-                                </span>
+                                <div className="flex flex-col">
+                                    <p className="text-[13px] text-neutral-400 font-medium">
+                                        {game.type}
+                                    </p>
+                                    <p className="font-semibold text-[14px] mt-px text-white line-clamp-2 leading-5">
+                                        {game.title}
+                                    </p>
+                                </div>
                             </Link>
                         ))}
                 </div>
