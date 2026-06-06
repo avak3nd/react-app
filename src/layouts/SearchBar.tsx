@@ -84,10 +84,10 @@ function SearchBar({ rounded = false }: SearchBarProps) {
                                     alt={game.title}
                                     className="w-12 h-16 object-cover rounded"
                                 />
-
-                                <span className="text-white text-sm">
-                                    {game.title}
-                                </span>
+                                <div className="flex flex-col">
+                                    <span className="text-white text-sm">{game.title}</span>
+                                    <span className="text-white text-sm">{game.type}</span>
+                                </div>
                             </Link>
                         ))}
                 </div>
