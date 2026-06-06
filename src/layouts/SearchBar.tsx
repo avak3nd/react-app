@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useSearchGames } from "../hooks/useSearchGames";
+import SearchImage from "../components/ui/SearchImage";
 
 type SearchBarProps = {
     rounded?: boolean;
@@ -46,7 +47,7 @@ function SearchBar({ rounded = false }: SearchBarProps) {
             </div>
 
             {showDropdown && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-neutral-800 rounded-xl overflow-hidden shadow-lg z-50">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-neutral-800 rounded-xl shadow-xl/20 z-50 max-h-96 overflow-auto">
                     {isFetching && (
                         <div className="p-4 text-sm text-neutral-400">
                             Searching...
@@ -75,19 +76,18 @@ function SearchBar({ rounded = false }: SearchBarProps) {
                                 key={game._id}
                                 to={`/product/${game._id}`}
                                 className="flex items-center gap-4 py-3 px-4 hover:bg-neutral-700 transition"
-                                onClick={() =>
-                                    setSearch("")
-                                }
+                                onClick={() => setSearch("")}
                             >
-                                <img
+                                <SearchImage
                                     src={game.img}
                                     alt={game.title}
-                                    className="w-12 h-16 object-cover rounded"
                                 />
+
                                 <div className="flex flex-col">
                                     <p className="text-[13px] text-neutral-400 font-medium">
                                         {game.type}
                                     </p>
+
                                     <p className="font-semibold text-[14px] mt-px text-white line-clamp-2 leading-5">
                                         {game.title}
                                     </p>
