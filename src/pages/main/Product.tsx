@@ -1,14 +1,25 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGame } from "../../hooks/useGame";
 
 function Product() {
     const { id } = useParams();
 
-    const {
-        data: game,
-        isLoading,
-        isError,
-    } = useGame(id!);
+    const { data: game, isLoading, isError } = useGame(id!);
+
+    useEffect(() => {
+        if (isLoading) {
+            document.title = "Loading...";
+            return;
+        }
+
+        if (isError || !game) {
+            document.title = "Game Not Found";
+            return;
+        }
+
+        document.title = `React Games | ${game.title}`;
+    }, [game, isLoading, isError]);
 
     if (isLoading) {
         return (
