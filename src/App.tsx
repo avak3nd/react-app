@@ -27,28 +27,29 @@ function App() {
   const sidebarFunc = () => setSidebar(!sidebar);
 
   return (
-    <div className="bg-neutral-950 min-h-screen px-5">
-      <Navbar sidebarFunc={sidebarFunc} />
-      <Sidebar sidebarFunc={sidebarFunc} sidebar={sidebar} />
-      <ScrollToTop />
-      <ToTheTop />
-      <Routes>
+    <div className="bg-neutral-950 min-h-screen px-5 flex flex-col justify-between">
+      <div>
+        <Navbar sidebarFunc={sidebarFunc} />
+        <Sidebar sidebarFunc={sidebarFunc} sidebar={sidebar} />
+        <ScrollToTop />
+        <ToTheTop />
+        <Routes>
 
-        {/* Main routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/product/:id" element={<Product />} />
+          {/* Main routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/product/:id" element={<Product />} />
 
-        {/* Home routes */}
-        <Route path="/discover-something-new" element={<New />} />
-        <Route path="/sales" element={<Sales />} />
-        <Route path="/free-games" element={<Free />} />
-        <Route path="/top-new-releases" element={<NewReleases />} />
-        <Route path="/trending" element={<Trending />} />
-        <Route path="/most-popular" element={<Popular />} />
-      </Routes>
-
+          {/* Home routes */}
+          <Route path="/discover-something-new" element={<New />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/free-games" element={<Free />} />
+          <Route path="/top-new-releases" element={<NewReleases />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/most-popular" element={<Popular />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   )
