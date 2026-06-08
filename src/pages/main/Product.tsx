@@ -44,7 +44,6 @@ function Product() {
         <div className="max-w-300 mx-auto text-white py-8">
             <div className="flex items-start gap-6">
 
-                {/* Block 1 */}
                 <div className="w-205">
                     <Header
                         game={game}
