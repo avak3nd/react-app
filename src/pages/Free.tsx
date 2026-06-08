@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Card from "../components/ui/Card"
 import CardLoading from "../components/ui/CardLoading";
 
@@ -5,12 +7,49 @@ import Skeleton from "react-loading-skeleton";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { useGamesByTag } from "../hooks/useGamesByTag";
+import { useInfiniteGamesByTag } from "../hooks/useInfiniteGamesByTag";
 
 function Free() {
     document.title = "React Games | Free Games";
 
-    const { data: games = [], isLoading, isError } = useGamesByTag("free");
+    const {
+        data,
+        isLoading,
+        isError,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+    } = useInfiniteGamesByTag("free", 10);
+
+    const games = data?.pages.flatMap((page) => page) ?? [];
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const nearBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 500;
+
+            if (
+                nearBottom &&
+                hasNextPage &&
+                !isFetchingNextPage
+            ) {
+                fetchNextPage();
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () =>
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+    }, [
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+    ]);
 
     if (isLoading) {
         return (
@@ -52,6 +91,16 @@ function Free() {
                     </div>
                 ))}
             </div>
+
+            {isFetchingNextPage && (
+                <div className="flex flex-col items-center justify-center gap-3 py-10">
+                    <div className="w-8 h-8 border-3 border-neutral-700 border-t-white rounded-full animate-spin" />
+
+                    <span className="text-neutral-400 text-sm">
+                        Loading more games...
+                    </span>
+                </div>
+            )}
         </div>
     )
 }
