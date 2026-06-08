@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGame } from "../../hooks/useGame";
+
+import Header from "../../components/product/Header";
 
 function Product() {
     const { id } = useParams();
 
     const { data: game, isLoading, isError } = useGame(id!);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         if (isLoading) {
@@ -39,9 +42,17 @@ function Product() {
 
     return (
         <div className="max-w-300 mx-auto text-white py-8">
-            <h1 className="text-4xl font-bold">
-                {game.title}
-            </h1>
+            <div className="flex items-start gap-6">
+
+                {/* Block 1 */}
+                <div className="w-205">
+                    <Header
+                        game={game}
+                        isLoaded={isLoaded}
+                        setIsLoaded={setIsLoaded}
+                    />
+                </div>
+            </div>
         </div>
     );
 }
