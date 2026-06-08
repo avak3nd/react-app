@@ -21,6 +21,7 @@ function Event() {
                 src="/home/event/banner.jpg"
                 alt="event"
                 onLoad={() => handleLoad("banner")}
+                loading="lazy"
                 className={`
                     absolute inset-0 w-full h-full object-cover
                     transition-opacity duration-500
@@ -43,6 +44,7 @@ function Event() {
                         alt="logo"
                         onLoad={() => handleLoad("logo")}
                         className="w-61.25 mb-8"
+                        loading="lazy"
                     />
                 </center>
 

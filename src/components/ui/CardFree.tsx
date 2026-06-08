@@ -20,6 +20,7 @@ function CardFree({ game }: CardProps) {
                     src={game.img}
                     alt={game.title}
                     onLoad={() => setIsLoaded(true)}
+                    loading="lazy"
                     className={`
                         h-full w-full object-cover
                         transition-all duration-500 ease-out
