@@ -84,6 +84,7 @@ function Banner() {
                                 src={game.banner}
                                 alt="banner"
                                 onLoad={() => handleLoad(`banner-${game.id}`)}
+                                loading="lazy"
                                 className={`
                                     w-full h-full object-cover
                                     transition-opacity duration-500
@@ -104,6 +105,7 @@ function Banner() {
                                     src={game.logo}
                                     alt="logo"
                                     onLoad={() => handleLoad(`logo-${game.id}`)}
+                                    loading="lazy"
                                     className="w-62.5 max-[525px]:w-55"
                                 />
                                 <p className="mt-8 max-[525px]:mt-6.5 text-[12.5px] font-semibold uppercase text-white">

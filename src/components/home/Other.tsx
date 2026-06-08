@@ -57,6 +57,7 @@ function Other() {
                                 src={section.image}
                                 alt={section.title}
                                 onLoad={() => handleImageLoad(index)}
+                                loading="lazy"
                                 className={`
                                     w-full h-full object-cover
                                     transition-all duration-500 ease-out

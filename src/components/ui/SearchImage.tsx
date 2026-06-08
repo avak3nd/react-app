@@ -18,6 +18,7 @@ function SearchImage({ src, alt }: SearchImageProps) {
                 src={src}
                 alt={alt}
                 onLoad={() => setIsLoaded(true)}
+                loading="lazy"
                 className={`
                     w-full h-full object-cover
                     transition-opacity duration-300
