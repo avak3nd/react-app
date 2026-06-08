@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Card from "../components/ui/Card";
 import CardLoading from "../components/ui/CardLoading";
 
@@ -5,12 +6,49 @@ import Skeleton from "react-loading-skeleton";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { useGamesByTag } from "../hooks/useGamesByTag";
+import { useInfiniteGamesByTag } from "../hooks/useInfiniteGamesByTag";
 
 function Trending() {
     document.title = "React Games | Trending";
 
-    const { data: games = [], isLoading, isError } = useGamesByTag("trending");
+    const {
+        data,
+        isLoading,
+        isError,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+    } = useInfiniteGamesByTag("trending", 10);
+
+    const games = data?.pages.flatMap((page) => page) ?? [];
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const nearBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 500;
+
+            if (
+                nearBottom &&
+                hasNextPage &&
+                !isFetchingNextPage
+            ) {
+                fetchNextPage();
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () =>
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+    }, [
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+    ]);
 
     if (isLoading) {
         return (
@@ -46,10 +84,8 @@ function Trending() {
             <b className="text-[35px] max-[768px]:text-[30px] max-[500px]:text-[25px] max-[400px]:text-[20px]">Trending</b>
 
             <div className="grid grid-cols-5 max-[1024px]:grid-cols-4 max-[768px]:grid-cols-3 max-[600px]:grid-cols-2 pt-14 max-[768px]:pt-10 max-[500px]:pt-7.5 gap-x-6 gap-y-14 max-[500px]:gap-y-10">
-                {games.map((game, index) => (
-                    <div key={index}>
-                        <Card game={game} />
-                    </div>
+                {games.map((game) => (
+                    <Card key={game._id} game={game} />
                 ))}
             </div>
         </div>
