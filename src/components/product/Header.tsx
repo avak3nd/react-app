@@ -1,4 +1,4 @@
-import { Star, StarHalf } from "@boxicons/react";
+import { Star, StarHalf, Child, Image, Like, User, Group, BookOpen } from "@boxicons/react";
 import type { Game } from "../../types/game";
 
 interface HeaderProps {
@@ -24,6 +24,31 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
     const hasComments = game.comment && game.comment.length > 0;
     const hasBadges = game.badge && game.badge.length > 0;
     const hasRank = game.rank !== null && game.rank !== undefined;
+
+    const getCommentIcon = (comment: string) => {
+        switch (comment) {
+            case "Great for Beginners":
+                return <Child fill="white" />;
+
+            case "Beautiful Visuals":
+                return <Image fill="white" />;
+
+            case "Highly Recommended":
+                return <Like fill="white" />;
+
+            case "Amazing Characters":
+                return <User fill="white" />;
+
+            case "Diverse Characters":
+                return <Group fill="white" />;
+
+            case "Amazing Storytelling":
+                return <BookOpen fill="white" />;
+
+            default:
+                return null;
+        }
+    };
 
     return (
         <div className="flex items-center gap-9">
@@ -74,9 +99,8 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
                     {hasComments &&
                         game.comment!.map((item, idx) => (
                             <div key={idx} className="text-neutral-400 flex items-center gap-2">
-                                <p className="text-nowrap">
-                                    {item}
-                                </p>
+                                {getCommentIcon(item)}
+                                <p className="text-nowrap"> {item}</p>
                             </div>
                         ))}
                 </div>
@@ -84,9 +108,7 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
                 {hasBadges && (
                     <div className="mt-6 text-[13.5px] flex flex-wrap gap-3">
                         {game.badge!.map((item, idx) => (
-                            <p key={idx} className="bg-neutral-800 w-fit py-1 px-4 rounded-xl text-nowrap">
-                                {item}
-                            </p>
+                            <p key={idx} className="bg-neutral-800 w-fit py-1 px-4 rounded-xl text-nowrap">{item}</p>
                         ))}
                     </div>
                 )}
