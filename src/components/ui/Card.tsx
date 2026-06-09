@@ -17,7 +17,7 @@ function Card({ game }: CardProps) {
                 )}
 
                 <img
-                    src={game.img}
+                    src={game.img.url}
                     alt={game.title}
                     onLoad={() => setIsLoaded(true)}
                     loading="lazy"

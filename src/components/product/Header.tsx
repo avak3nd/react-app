@@ -58,7 +58,7 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
                 )}
 
                 <img
-                    src={game.img}
+                    src={game.img.url}
                     alt={game.title}
                     onLoad={() => setIsLoaded(true)}
                     loading="lazy"

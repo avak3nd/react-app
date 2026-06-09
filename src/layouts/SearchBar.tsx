@@ -79,7 +79,7 @@ function SearchBar({ rounded = false }: SearchBarProps) {
                                 onClick={() => setSearch("")}
                             >
                                 <SearchImage
-                                    src={game.img}
+                                    src={game.img.url}
                                     alt={game.title}
                                 />
 
