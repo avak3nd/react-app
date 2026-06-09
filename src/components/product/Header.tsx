@@ -51,8 +51,8 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
     };
 
     return (
-        <div className="flex items-center gap-9">
-            <div className="relative aspect-3/4 max-w-37.5 overflow-hidden rounded-2xl w-full">
+        <div className="flex items-center gap-9 max-[560px]:flex-col">
+            <div className="relative aspect-3/4 max-w-37.5 max-[560px]:max-w-full overflow-hidden rounded-2xl w-full">
                 {!isLoaded && (
                     <div className="absolute inset-0 animate-pulse bg-neutral-800" />
                 )}
@@ -70,8 +70,8 @@ function Header({ game, isLoaded, setIsLoaded }: HeaderProps) {
                 />
             </div>
 
-            <div>
-                <h1 className="text-3xl font-extrabold">{game.title}</h1>
+            <div className="w-full">
+                <h1 className="text-3xl font-extrabold max-[425px]:text-2xl">{game.title}</h1>
 
                 <div className="flex items-center flex-wrap gap-5 mt-3 text-[14px]">
                     <div className="flex items-center">
