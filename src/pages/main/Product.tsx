@@ -7,7 +7,7 @@ import Header from "../../components/product/Header";
 function Product() {
     const { id } = useParams();
 
-    const { data: game, isLoading, isError } = useGame(id!);
+    const { data: game, isLoading, isError, error } = useGame(id!);
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -35,7 +35,9 @@ function Product() {
     if (isError || !game) {
         return (
             <div className="max-w-300 mx-auto text-red-500 py-8">
-                Game not found
+                {error instanceof Error
+                    ? error.message
+                    : "Game not found"}
             </div>
         );
     }

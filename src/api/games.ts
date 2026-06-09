@@ -1,5 +1,12 @@
 import type { Game } from "../types/game";
 
+type GamesResponse = {
+    message: string;
+    count?: number;
+    games?: Game[];
+    error?: string;
+};
+
 export const getGamesByTag = async (
     tag: string,
     limit?: number
@@ -14,11 +21,13 @@ export const getGamesByTag = async (
 
     const response = await fetch(url.toString());
 
+    const data: GamesResponse = await response.json();
+
     if (!response.ok) {
-        throw new Error("Failed to fetch games");
+        throw new Error(
+            data.message || data.error || "Failed to fetch games"
+        );
     }
 
-    const data = await response.json();
-
-    return data.games;
+    return data.games || [];
 };

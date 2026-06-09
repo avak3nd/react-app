@@ -16,7 +16,7 @@ import { EffectCoverflow } from 'swiper/modules';
 import { useGamesByTag } from "../../hooks/useGamesByTag";
 
 function NewReleases() {
-    const { data: games = [], isLoading, isError } = useGamesByTag("new_release", 10);
+    const { data: games = [], isLoading, isError, error } = useGamesByTag("new_release", 10);
 
     const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -37,7 +37,9 @@ function NewReleases() {
     if (isError) {
         return (
             <div className="max-w-300 mx-auto text-red-500">
-                Failed to load games
+                {error instanceof Error
+                    ? error.message
+                    : "Failed to load games"}
             </div>
         );
     }

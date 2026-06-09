@@ -12,7 +12,7 @@ import { EffectCoverflow } from 'swiper/modules';
 import { useGamesByTag } from "../../hooks/useGamesByTag";
 
 function Trending() {
-    const { data: games = [], isLoading, isError } = useGamesByTag("trending", 5);
+    const { data: games = [], isLoading, isError, error } = useGamesByTag("trending", 5);
 
     if (isLoading) {
         return (
@@ -23,7 +23,9 @@ function Trending() {
     if (isError) {
         return (
             <div className="max-w-300 mx-auto text-red-500">
-                Failed to load games
+                {error instanceof Error
+                    ? error.message
+                    : "Failed to load games"}
             </div>
         );
     }

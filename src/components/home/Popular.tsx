@@ -16,7 +16,7 @@ import { EffectCoverflow } from 'swiper/modules';
 import { useGamesByTag } from "../../hooks/useGamesByTag";
 
 function Popular() {
-    const { data: games = [], isLoading, isError } = useGamesByTag("most_popular", 10);
+    const { data: games = [], isLoading, isError, error } = useGamesByTag("most_popular", 10);
 
     const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -37,7 +37,9 @@ function Popular() {
     if (isError) {
         return (
             <div className="max-w-300 mx-auto text-red-500">
-                Failed to load games
+                {error instanceof Error
+                    ? error.message
+                    : "Failed to load games"}
             </div>
         );
     }

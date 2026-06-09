@@ -10,7 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useGamesByTag } from "../../hooks/useGamesByTag";
 
 function Sales() {
-    const { data: games = [], isLoading, isError } = useGamesByTag("sale", 4);
+    const { data: games = [], isLoading, isError, error } = useGamesByTag("sale", 4);
 
     if (isLoading) {
         return (
@@ -40,7 +40,9 @@ function Sales() {
     if (isError) {
         return (
             <div className="max-w-300 mx-auto text-red-500">
-                Failed to load games
+                {error instanceof Error
+                    ? error.message
+                    : "Failed to load games"}
             </div>
         );
     }
